@@ -2,6 +2,10 @@
 # Script to login and creat commits for github commit history performance             --
 #---------------------------------------------------------------------------------------
 
+# set to how many times you would like to run -----------
+limit = 5  
+# -------------------------------------------------------
+
 from selenium.webdriver import Firefox
 from selenium.webdriver.firefox.options import Options
 from selenium.webdriver.firefox.service import Service
@@ -97,7 +101,6 @@ def killDriver():
 # ----------- Function Calls -------------
 
 count = 0   # always set to 0
-limit = 5   # set to how many times you would like to run
 
 loginToGitHub()
 
