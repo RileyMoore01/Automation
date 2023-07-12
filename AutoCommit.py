@@ -26,8 +26,8 @@ def loginToGitHub():
     driver.get("https://github.com/login")
 
     # initailze the user and pass
-    email = "xrileyxmoorex@outlook.com"
-    password = "Gtxabc940DT"
+    email = "@outlook.com"
+    password = ""
 
     driver.maximize_window()
     enterEmail = driver.find_element("id", "login_field")
