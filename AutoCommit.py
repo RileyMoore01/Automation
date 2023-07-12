@@ -3,7 +3,7 @@
 #---------------------------------------------------------------------------------------
 
 # set to how many times you would like to run -----------
-limit = 5  
+limit = 11  
 # -------------------------------------------------------
 
 from selenium.webdriver import Firefox
@@ -30,13 +30,10 @@ def loginToGitHub():
     password = "Gtxabc940DT"
 
     driver.maximize_window()
-
     enterEmail = driver.find_element("id", "login_field")
     enterEmail.send_keys(email)
-
     enterPass = driver.find_element("id", "password")
     enterPass.send_keys(password)
-
     submitLogin = driver.find_element(By.XPATH, "/html/body/div[1]/div[3]/main/div/div[4]/form/div/input[13]")
     submitLogin.click()
 
@@ -48,9 +45,14 @@ def loginToGitHub():
 # Open the bootcamp repo to edit
 # </summary>
 def openRepository():
-    bootcamp = driver.find_element(By.XPATH, "/html/body/div[1]/div[6]/div/div/aside/div/div/loading-context/div/div[1]/div/ul/li[3]/div/div/a")
-    driver.implicitly_wait(100)
-    bootcamp.click()
+    openRepo = driver.find_element(By.XPATH, "/html/body/div[1]/div[6]/div/div/aside/div/div/loading-context/div/div[1]/div/ul/li[2]/div/div/a")
+    openRepo.click()
+    # userBtn = driver.find_element(By.XPATH, "//*[@id='dialog-show-dialog-d79c6c8b-1576-4191-b661-cf1e0883dec9']")
+    # userBtn.click()
+    # repoBtn = driver.find_element(By.Id, "//*[@id='item-454af4ac-fd81-40b0-85ae-f0c0cf02726f']")
+    # repoBtn.click()
+    # bootcamp = driver.find_element(By.XPATH, "/html/body/div[1]/div[6]/main/div/div/div[2]/turbo-frame/div/div[2]/ul/li[2]/div[1]/div[1]/h3/a")
+    # bootcamp.click()
 
     driver.implicitly_wait(100)
 
@@ -73,7 +75,6 @@ def editRepository():
     # start editing
     editBtn = driver.find_element(By.XPATH, "/html/body/div[1]/div[6]/div/main/turbo-frame/react-app/div/div/div[2]/div[1]/div/div/main/div[2]/div/div[3]/div[3]/div/div[1]/div[1]/div[2]/div[2]/div[1]/div[2]/span/a")
     editBtn.click()
-
     # write to the textbox
     textBox = driver.find_element(By.XPATH, "/html/body/div[1]/div[6]/div/main/turbo-frame/react-app/div/div/div[2]/div[1]/div/div/main/div[2]/div/div[3]/div[1]/div[1]/div/div[2]/span[2]/input")
     textBox.send_keys("$")
@@ -84,9 +85,7 @@ def editRepository():
 def commit():
     commit = driver.find_element(By.XPATH, "/html/body/div[1]/div[6]/div/main/turbo-frame/react-app/div/div/div[2]/div[1]/div/div/main/div[2]/div/div[3]/div[1]/div[2]/button")
     commit.click()
-
     driver.implicitly_wait(100)
-
     commitConfirm = driver.find_element(By.XPATH, "/html/body/div[1]/div[6]/div/main/turbo-frame/react-app/div/div/div[1]/div/div/div/div[3]/button[2]")
     commitConfirm.click()
 
@@ -103,15 +102,12 @@ def killDriver():
 count = 0   # always set to 0
 
 loginToGitHub()
-
 openRepository()
-
 openFile()
 
 while (count <= limit):
 
     editRepository()
-
     commit()
 
     count = count + 1
