@@ -3,7 +3,7 @@
 #---------------------------------------------------------------------------------------
 
 # set to how many times you would like to run -----------
-limit = 11  
+limit = 7  
 # -------------------------------------------------------
 
 from selenium.webdriver import Firefox
@@ -26,7 +26,7 @@ def loginToGitHub():
     driver.get("https://github.com/login")
 
     # initailze the user and pass
-    email = "@outlook.com"
+    email = ""
     password = ""
 
     driver.maximize_window()
@@ -37,7 +37,7 @@ def loginToGitHub():
     submitLogin = driver.find_element(By.XPATH, "/html/body/div[1]/div[3]/main/div/div[4]/form/div/input[13]")
     submitLogin.click()
 
-    driver.implicitly_wait(500)
+    driver.implicitly_wait(1000)
 
 
 
@@ -45,7 +45,7 @@ def loginToGitHub():
 # Open the bootcamp repo to edit
 # </summary>
 def openRepository():
-    openRepo = driver.find_element(By.XPATH, "/html/body/div[1]/div[6]/div/div/aside/div/div/loading-context/div/div[1]/div/ul/li[2]/div/div/a")
+    openRepo = driver.find_element(By.XPATH, "/html/body/div[1]/div[6]/div/div/aside/div/div/loading-context/div/div[1]/div/ul/li[1]/div/div/a")
     openRepo.click()
     # userBtn = driver.find_element(By.XPATH, "//*[@id='dialog-show-dialog-d79c6c8b-1576-4191-b661-cf1e0883dec9']")
     # userBtn.click()
