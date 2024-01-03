@@ -18,7 +18,7 @@ def openOutlook():
 
     # make a global function to decrypt password
     email = "riley_moore1@outlook.com"
-    password = "Scooter2."
+    password = ""
 
     # open github on firefox
     driver.get("https://login.live.com/login.srf?wa=wsignin1.0&rpsnv=19&ct=1704299547&rver=7.0.6738.0&wp=MBI_SSL&wreply=https%3a%2f%2foutlook.live.com%2fowa%2f%3fcobrandid%3dab0455a0-8d03-46b9-b18b-df2f57b9e44c%26nlp%3d1%26deeplink%3dowa%252f0%252f%253fstate%253d1%26redirectTo%3daHR0cHM6Ly9vdXRsb29rLmxpdmUuY29tL21haWwvMC8%26RpsCsrfState%3df5130bb1-0d74-0b2d-0227-96079bc57019&id=292841&aadredir=1&CBCXT=out&lw=1&fl=dob%2cflname%2cwld&cobrandid=ab0455a0-8d03-46b9-b18b-df2f57b9e44c")
