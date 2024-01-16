@@ -5,5 +5,5 @@
 
 <h1>How to use</h1>
 <span>Simply press run in VS Code and the process will begin!</span><br />
-<span>Takes about 3 minutes to update at the moment. Depends on how many active users there are.</span><br /><br /><br />
-<span>Note: I can not have a detailed description of how to setup the query part of this script for security reasons so this will obviously not work for anyone else</span><br />
+<span>Takes about 3 minutes to update everyones password at the moment. Depends on how many active users there are.</span><br /><br /><br />
+<span><strong>Note:</strong> I can not have a detailed description of how to setup the query part of this script for security reasons so this will obviously not work for anyone else</span><br />
