@@ -2,24 +2,26 @@
 # Script to login and creat commits for github commit history performance             --
 #---------------------------------------------------------------------------------------
 
-# set to how many times you would like to run -----------
-limit = 7  
-# -------------------------------------------------------
+#C:\Users\Zebu\Documents\GitHub\Personal\Automation\AutoCommit.py
 
-from selenium.webdriver import Firefox
-from selenium.webdriver.firefox.options import Options
-from selenium.webdriver.firefox.service import Service
+from selenium import webdriver
 from selenium.webdriver.common.by import By
+from selenium.webdriver.common.keys import Keys
+from cryptography.fernet import Fernet
+
+
+# set to how many times you would like to run 
+import random
+limit = random.choice([1,2,3,4,5,6,7,8,9,10,11,12])
 
 # set up browser
-firefoxOptions = Options()
-firefoxOptions.binary_location = r"C:\\Program Files\\Mozilla Firefox\\firefox.exe"
-service = Service()
-driver = Firefox(service=service, options=firefoxOptions)
+driver = webdriver.Firefox()
 
-# <summary>
+# set up fernet
+key = Fernet.generate_key()
+fernet = Fernet(key)
+
 # Login to github
-# </summary>
 def loginToGitHub():
 
     # open github on firefox
@@ -27,6 +29,8 @@ def loginToGitHub():
 
     # initailze the user and pass
     email = ""
+    # encPassword = 'gAAAA2SCy4hJIor-9_QQRiTxHFl4niaRY-C4GHu0T1mWBe6ZPKjiWoVNB-3ora5mXQe9FJggRgLDhjlmig=='
+    # password = fernet.decrypt(encPassword).decode()
     password = ""
 
     driver.maximize_window()
@@ -39,13 +43,15 @@ def loginToGitHub():
 
     driver.implicitly_wait(1000)
 
+# Seach for the destination repository
+def findRepository():
+    repoInput = driver.find_element(By.XPATH, "//*[@id='dashboard-repos-filter-left']")
+    repoInput.send_keys("Bootcamp")
+    driver.implicitly_wait(100)
 
-
-# <summary>
 # Open the bootcamp repo to edit
-# </summary>
 def openRepository():
-    openRepo = driver.find_element(By.XPATH, "/html/body/div[1]/div[6]/div/div/aside/div/div/loading-context/div/div[1]/div/ul/li[1]/div/div/a")
+    openRepo = driver.find_element(By.XPATH, "/html/body/div[1]/div[6]/div/div/aside/div/div/loading-context/div/div[1]/div/ul[1]/li[1]/div/div/a")
     openRepo.click()
     # userBtn = driver.find_element(By.XPATH, "//*[@id='dialog-show-dialog-d79c6c8b-1576-4191-b661-cf1e0883dec9']")
     # userBtn.click()
@@ -57,42 +63,34 @@ def openRepository():
     driver.implicitly_wait(100)
 
 
-# <summary>
 # Open the file to be edited
-# </summary>
 def openFile():
     # click on file to edit
-    file = driver.find_element(By.XPATH, "/html/body/div[1]/div[6]/div/main/turbo-frame/div/div/div/div[2]/div[1]/div[4]/div[3]/div[1]/div[6]/div[2]/span/a")
+    file = driver.find_element(By.XPATH, "//*[@id='folder-row-4']/td[2]/div/div/h3/div/a")
     file.click()
 
     driver.implicitly_wait(100)
 
-# <summary>
 # Open the edit page to create a difference to commit
-# </summary>
 def editRepository():
 
     # start editing
-    editBtn = driver.find_element(By.XPATH, "/html/body/div[1]/div[6]/div/main/turbo-frame/react-app/div/div/div[2]/div[1]/div/div/main/div[2]/div/div[3]/div[3]/div/div[1]/div[1]/div[2]/div[2]/div[1]/div[2]/span/a")
+    editBtn = driver.find_element(By.XPATH, "//*[@id='repos-sticky-header']/div[1]/div[2]/div[2]/div[1]/div[2]/span/a")
     editBtn.click()
     # write to the textbox
-    textBox = driver.find_element(By.XPATH, "/html/body/div[1]/div[6]/div/main/turbo-frame/react-app/div/div/div[2]/div[1]/div/div/main/div[2]/div/div[3]/div[1]/div[1]/div/div[2]/span[2]/input")
+    textBox = driver.find_element(By.XPATH, "//*[@id='repo-content-pjax-container']/react-app/div/div/div[1]/div/div/div[2]/div[2]/div/div[3]/div[1]/div[1]/div[2]/div[2]/span[2]/input")
     textBox.send_keys("$")
 
-# <summary>
 # Commit any changes
-# </summary>
 def commit():
-    commit = driver.find_element(By.XPATH, "/html/body/div[1]/div[6]/div/main/turbo-frame/react-app/div/div/div[2]/div[1]/div/div/main/div[2]/div/div[3]/div[1]/div[2]/button")
+    commit = driver.find_element(By.XPATH, "//*[@id='repo-content-pjax-container']/react-app/div/div/div[1]/div/div/div[2]/div[2]/div/div[3]/div[1]/div[2]/button")
     commit.click()
     driver.implicitly_wait(100)
-    commitConfirm = driver.find_element(By.XPATH, "/html/body/div[1]/div[6]/div/main/turbo-frame/react-app/div/div/div[1]/div/div/div/div[3]/button[2]")
+    commitConfirm = driver.find_element(By.XPATH, "//*[@id='__primerPortalRoot__']/div/div/div/div[3]/button[2]")
     commitConfirm.click()
 
 
-# <summary>
 # Kill the active browser window
-# </summary>
 def killDriver():
     driver.quit()
 
@@ -102,6 +100,7 @@ def killDriver():
 count = 0   # always set to 0
 
 loginToGitHub()
+findRepository()
 openRepository()
 openFile()
 
