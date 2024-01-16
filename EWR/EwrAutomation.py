@@ -42,7 +42,7 @@ def UpdatePassword():
     driver = Firefox(service=service, options=firefoxOptions)
     driver.maximize_window()
     driver.implicitly_wait(0.5)
-    driver.get("https://www.ewrinc.com/cotton/Default.aspx")
+    driver.get("hiddenWebsiteForPrivacy")
 
     # update the password for each account
     for row in cursor.fetchall():
