@@ -25,8 +25,8 @@ def UpdatePassword():
 
     # ----------------------   Query needed to retreive passwords and ids  -----------------
     query = f"""
-        SELECT user_id, trim(user_password)
-        FROM Transmissions.dbo.flProfileEWR
+        SELECT user_id, trim(password)
+        FROM someDatabaseHere
         WHERE active = '1'
     """
 
