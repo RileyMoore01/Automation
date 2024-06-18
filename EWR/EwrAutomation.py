@@ -51,10 +51,6 @@ def UpdatePassword():
         user_name = row[0]
         password = row[1]
 
-        # were all inactive on gintool. made the change to the table
-        # may have to do this everytime if it continues to not update the profileEWR table
-        # if user_name != "G50083" and user_name != "G70116" and user_name != "Miller" and user_name != "GREGP " and user_name != "GULF11" and user_name != "GULF12":
-
         # Start clicking elements on the page according to id
         login = driver.find_element("id","Main_lvWelcome_lnkLogOut")
         login.click()
