@@ -2,6 +2,9 @@
 # Automated email service scheduled by windows task scheduler                         --
 #---------------------------------------------------------------------------------------
 
+# TODO
+# figure out how to type in the email body box
+
 from selenium.webdriver import Firefox
 from selenium.webdriver.firefox.options import Options
 from selenium.webdriver.firefox.service import Service
