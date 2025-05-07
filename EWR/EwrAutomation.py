@@ -5,7 +5,7 @@
 #---------------------------------------------------------------------------------------
 
 # Database connection
-import PCCAPythonDatabase as Database
+import PythonDatabase as Database
 Database.SetConnectionServer("prod")
 
 # Screen scraping tools.
